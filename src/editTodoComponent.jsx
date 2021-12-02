@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
 export default class EditTodo extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {  };
-//   }
+  constructor(props) {
+    super(props);
+    this.state = { };
+    // this.handleSave = this.handleSave.bind(this);
+  }
+
+  // handleSave() {
+  //   this.setState({});
+  // }
+
   render() {
     return (
       <li className='list-group-item'>
@@ -24,9 +30,9 @@ export default class EditTodo extends Component {
               id='inputPriority'
               className='form-control col-sm-6'
             >
-              <option value='High Priority'>High Priority</option>
-              <option value='Mid Priority'>Mid Priority</option>
-              <option value='Low Priority'>Low Priority</option>
+              <option value='1'>High Priority</option>
+              <option value='2'>Mid Priority</option>
+              <option value='3'>Low Priority</option>
             </select>
           </div>
           <div className='col-sm-12 text-right'>
