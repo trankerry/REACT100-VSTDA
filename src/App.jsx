@@ -10,24 +10,41 @@ export default class App extends Component {
       id: 0,
       todo: '',
       priority: '',
+      updatedTodo: '',
+      updatedPriority: ''
     };
-    // this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
-  // handleSave() {
-  //   this.setState({});
-  // }
-
   handleDelete(todoToBeRemoved) {
-    const updatedTodo = this.state.todoList.filter(othersItems => othersItems !== todoToBeRemoved);
+    const updatedTodo = this.state.todoList.filter(
+      othersItems => othersItems !== todoToBeRemoved
+    );
     this.setState({ todoList: updatedTodo });
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSave(item) {
+    const updatedTodoList = [...this.state.todoList];
+    updatedTodoList[item.id].todo = updatedTodo;
+    updatedTodoList[item.id].priority = updatedPriority;
+    this.setState({ 
+      
+      
+    })
+    // const updatedTodoList = this.state.todoList.slice();
+    // const index = updatedTodoList.indexOf(item);
+
+    // item.todo = `${this.state.updatedTodo}`;
+    // item.priority = `${this.state.updatedPriority}`;
+
+    // this.setState({ todoList: updatedTodoList });
   }
 
   handleClick() {
@@ -39,6 +56,8 @@ export default class App extends Component {
           id: this.state.id,
           todo: this.state.todo,
           priority: this.state.priority,
+          updatedTodo: this.state.updatedTodo,
+          updatedPriority: this.state.updatedPriority
         },
       ],
     });
@@ -52,11 +71,13 @@ export default class App extends Component {
         todo={ this.state.todo }
         priority={ this.state.priority }
         id={ this.state.id }
+        updatedTodo={ this.state.updatedTodo }
+        updatedPriority={ this.state.updatedPriority }
         todoList={ this.state.todoList }
         handleChange={ this.handleChange }
         handleClick={ this.handleClick }
         handleDelete={ this.handleDelete }
-        handleEdit={ this.handleEdit }
+        handleSave={ this.handleSave }
       />
     );
   }
