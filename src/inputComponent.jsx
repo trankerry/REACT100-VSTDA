@@ -78,10 +78,11 @@ export default class Input extends Component {
             <div className='col-sm-8'>
               <List
                 todoList={ this.props.todoList }
-                sort={ this.props.sort }
+                sort={ this.props.sortType }
                 handleChange={ this.props.handleChange }
                 handleDelete={ this.props.handleDelete }
                 handleSave={ this.props.handleSave }
+                handleSort={ this.props.handleSort }
               />
             </div>
           </div>

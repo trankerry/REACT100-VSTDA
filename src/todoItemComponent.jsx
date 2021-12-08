@@ -21,6 +21,8 @@ export default class TodoItem extends Component {
   render() {
     return (
       <div>
+        {/* check to see if edit is true, if so then display the editItem display
+        else show the regular todoItem display */}
         {this.state.edit ? (
           <form className={ `${this.props.priority} alert mb-0 py-3` }>
             <div className='form-group'>
@@ -62,6 +64,8 @@ export default class TodoItem extends Component {
                 type='button'
                 className='btn btn-success update-todo'
                 value={ this.props.id }
+                // clicking will save the item to state/update the list and change edit to false making
+                // it appear as a todoItem
                 onClick={ () => {
                   this.props.handleSave();
                   this.handleEdit();
@@ -72,6 +76,8 @@ export default class TodoItem extends Component {
             </div>
           </form>
         ) : (
+          // the form will load with the priority value which is the same
+          // as the bootstrap name for alert bg colors
           <form className={ `${this.props.priority} alert mb-0 py-1` }>
             <div className='form-row d-flex justify-content-between'>
               <div className='ml-3'>

@@ -5,40 +5,36 @@ import TodoItem from './todoItemComponent';
 export default class List extends Component {
   constructor(props) {
     super(props);
-    this.sort = this.sort.bind(this);
-  }
-
-  sort() {
-    let sortType = { this.props.sort };
-    let list = { this.props.todoList };
-    if( sortType === 'AD') {
-      list.sort((a,b) => {
-        let a = a.todo.toLowerCase(), b = b.todo.toLowerCase();
-
-        if(a<b) {
-          return
-        }
-      })
-    }
   }
 
   render() {
     return (
       <div className='card'>
-        <div className='card-header d-flex justify-content-between'>
-          ViewTodos
-          <select
-            name='sort'
-            className='form-control w-25'
-            id='sort'
-            value={ this.state.sort }
-            onChange={ this.props.handleChange }
-          >
-            <option value='AD'>Alphabetical Descending</option>
-            <option value='AA'>Alphabetical Ascending</option>
-            <option value='PLD'>Priority Level Descending </option>
-            <option value='PLA'>Priority Level Ascending</option>
-          </select>
+        <div className='card-header form-inline d-flex justify-content-between'>
+          <div>ViewTodos</div>
+          {/* Bonus sort features */}
+          <div>
+            <select
+              name='sortType'
+              className='form-control mr-3'
+              id='sortType'
+              value={ this.props.sortType }
+              onChange={ this.props.handleChange }
+            >
+              <option value='' disabled selected>
+                Sort
+              </option>
+              <option value='Alpha'>Alphabetical</option>
+              <option value='Level'>Priority Level</option>
+            </select>
+            <button
+              type='button'
+              className='btn btn-secondary'
+              onClick={ () => this.props.handleSort() }
+            >
+              Apply
+            </button>
+          </div>
         </div>
         <div
           className='defaultMessage py-4 m-0 alert alert-info'
