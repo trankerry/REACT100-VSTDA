@@ -58,7 +58,7 @@ export default class Input extends Component {
                           Select a Priority
                         </option>
                         <option value='alert-danger'>High Priority</option>
-                        <option value='alert-warning'>Mid Priority</option>
+                        <option value='alert-warning'>Medium Priority</option>
                         <option value='alert-success'>Low Priority</option>
                       </select>
                     </div>
@@ -67,7 +67,7 @@ export default class Input extends Component {
                 <div className='card-footer'>
                   <button
                     type='button'
-                    className='btn btn-success'
+                    className='btn btn-success create-todo'
                     onClick={ this.props.handleClick }
                   >
                     Add
@@ -78,6 +78,7 @@ export default class Input extends Component {
             <div className='col-sm-8'>
               <List
                 todoList={ this.props.todoList }
+                sort={ this.props.sort }
                 handleChange={ this.props.handleChange }
                 handleDelete={ this.props.handleDelete }
                 handleSave={ this.props.handleSave }

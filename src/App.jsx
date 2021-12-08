@@ -11,7 +11,8 @@ export default class App extends Component {
       todo: '',
       priority: '',
       updatedTodo: '',
-      updatedPriority: ''
+      updatedPriority: '',
+      sort: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -30,21 +31,17 @@ export default class App extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSave(item) {
-    const updatedTodoList = [...this.state.todoList];
-    updatedTodoList[item.id].todo = updatedTodo;
-    updatedTodoList[item.id].priority = updatedPriority;
-    this.setState({ 
-      
-      
-    })
-    // const updatedTodoList = this.state.todoList.slice();
-    // const index = updatedTodoList.indexOf(item);
-
-    // item.todo = `${this.state.updatedTodo}`;
-    // item.priority = `${this.state.updatedPriority}`;
-
-    // this.setState({ todoList: updatedTodoList });
+  handleSave(todoEdit) {
+    const updatedTodoList = this.state.todoList.filter(
+      othersItems => othersItems !== todoEdit
+    );
+    const editedTodo = {
+      id: todoEdit.id,
+      priority: this.state.updatedPriority,
+      todo: this.state.updatedTodo,
+    };
+    updatedTodoList.splice(todoEdit.id, 0, editedTodo);
+    this.setState({ todoList: updatedTodoList });
   }
 
   handleClick() {
@@ -73,6 +70,7 @@ export default class App extends Component {
         id={ this.state.id }
         updatedTodo={ this.state.updatedTodo }
         updatedPriority={ this.state.updatedPriority }
+        sort={ this.state.sort }
         todoList={ this.state.todoList }
         handleChange={ this.handleChange }
         handleClick={ this.handleClick }
