@@ -10,7 +10,7 @@ Nightmare.action(...Actions);
 let nightmare;
 
 const app = express();
-app.use(express.static(path.join(__dirname, '/../public')));
+app.use(express.static(path.join(__dirname, '/../')));
 app.use(express.static(path.join(__dirname, '/../dist')));
 
 app.listen(8080);
